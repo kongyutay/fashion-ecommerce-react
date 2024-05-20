@@ -13,7 +13,7 @@ const Products = () => {
             ...product, quantity: qty, totalPrice,
         };
         dispatch(addToCart(tempProduct));
-        dispatch(getCartTotal)
+        dispatch(getCartTotal());
     };
     return (
         <div className="container-fluid pt-5">

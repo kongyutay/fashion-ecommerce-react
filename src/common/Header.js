@@ -57,7 +57,7 @@ const Header = () => {
                                         <i className="fas fa-heart text-white"></i>
                                         <span style={{ paddingBottom:"2px" }} className="badge text-white border border-dark rounded-circle">0</span>
                                     </Link>
-                                    <Link className="btn px-0 ml-2">
+                                    <Link to="/cart" className="btn px-0 ml-2">
                                         <i className="fas fa-shopping-cart text-white"></i>
                                         <span style={{ paddingBottom:"2px" }} className="badge text-white border border-dark rounded-circle">{totalItems}</span>
                                     </Link>
