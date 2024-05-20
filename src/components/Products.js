@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { products } from "../data/Data";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addToCart, getCartTotal } from "../redux/CartSlice";
 
 const Products = () => {
-    const handleAddToCart = (product) => {}
+    const dispatch = useDispatch();
+    const [qty, setQty] = useState(1);
+    const handleAddToCart = (product) => {
+        let totalPrice = qty * product.price;
+        const tempProduct = {
+            ...product, quantity: qty, totalPrice,
+        };
+        dispatch(addToCart(tempProduct));
+        dispatch(getCartTotal)
+    };
     return (
         <div className="container-fluid pt-5">
             <div className="row px-xl-5">

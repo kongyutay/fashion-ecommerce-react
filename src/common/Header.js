@@ -5,11 +5,16 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { nav } from "../data/Data";
 import Category from "./Category";
+import { useDispatch, useSelector } from "react-redux";
+import { getCartTotal } from "../redux/CartSlice";
 
 const Header = () => {
+    const dispatch = useDispatch();
+    const { totalItems } = useSelector((state) => state.cart);
     const [isSticky, setIsSticky] = useState(false);
     const [toggler, setToggler] = useState(false);
     useEffect(()=> {
+        dispatch(getCartTotal)
         window.addEventListener("scroll", handleScroll);
         return () => {
             window.addEventListener("scroll", handleScroll);
@@ -54,7 +59,7 @@ const Header = () => {
                                     </Link>
                                     <Link className="btn px-0 ml-2">
                                         <i className="fas fa-shopping-cart text-white"></i>
-                                        <span style={{ paddingBottom:"2px" }} className="badge text-white border border-dark rounded-circle">0</span>
+                                        <span style={{ paddingBottom:"2px" }} className="badge text-white border border-dark rounded-circle">{totalItems}</span>
                                     </Link>
                                 </div>
 
